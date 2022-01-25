@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-97whpc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-97whpc
+  namespace: my-nginx-97whpc
+  labels:
+    name: nginx-97whpc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-97whpc
+  template:
+    metadata:
+      namespace: my-nginx-97whpc
+      labels:
+        name: nginx-97whpc
+    spec:
+      containers:
+      - name: nginx-97whpc
+        image: nginx
+        ports:
+        - containerPort: 80
+
